@@ -206,7 +206,7 @@
     <string name="action_sortdate">Liste sortieren nach Datum</string>
     <string name="action_sortimportance">Liste sortieren nach Wichtigkeit (dann Datum)</string>
     <string name="action_usermenu">Benutzerverwaltung</string>
-    <string name="app_name">ToDo King</string>
+    <string name="app_name">ToDo Master</string>
     <string name="dialog_erasemsg">Sind Sie sicher, dass Sie alle ToDo löschen möchten?</string>
     <string name="dialog_erasetitle">Alle ToDo löschen</string>
     <string name="hello_world">Hello world!</string>

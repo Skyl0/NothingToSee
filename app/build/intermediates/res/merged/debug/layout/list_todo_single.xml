@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:longClickable="true">
+    android:longClickable="true"
+    android:clickable="true">
 
     <LinearLayout
 
@@ -38,26 +39,28 @@
             android:width="150dp"
             android:gravity="left"
             android:enabled="false"
-            android:textColor="#0009ff"
+            android:textColor="#180023"
             android:autoText="false"
             android:text="NAME"
             android:layout_gravity="center"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textSize="20dp" />
 
         <TextView
 
             android:id="@+id/description"
 
-            android:layout_width="106dp"
+            android:layout_width="256dp"
 
             android:layout_height="match_parent"
             android:gravity="fill_horizontal|center_horizontal"
             android:width="33dp"
             android:textStyle="italic"
-            android:textColor="#0074ff"
+            android:textColor="#FF180023"
             android:text="DESC"
             android:padding="5dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -65,7 +68,8 @@
             android:id="@+id/date"
             android:singleLine="false"
             android:padding="5dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:textColor="#FF180023" />
 
 
     </LinearLayout>

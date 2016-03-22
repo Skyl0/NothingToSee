@@ -13,10 +13,8 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import java.util.Date;
 
 import skyit.todo.adapter.ToDoAdapter;
 import skyit.todo.controller.ToDoCtrl;
@@ -51,21 +49,26 @@ public class MainActivity extends AppCompatActivity {
 
         listview.setAdapter(todoadpt);
         listview.setClickable(true);
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView a, View v, int position, long id) {
-                Context _c = getApplicationContext();
-                ToDo o = (ToDo)listview.getItemAtPosition(position);
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
 
-                Log.i("MAIN", "Click registered at " + position);
+                ListView lv = (ListView) parent;
+                Context _c = getApplicationContext();
+                ToDo o = (ToDo) lv.getItemAtPosition(position);
+
                 long rowid = o.getRowid();
+
+                Log.i("MAIN", "Click registered at " + position + "! RowId caught " + rowid);
 
                 Intent i = new Intent(_c, AddEditToDo.class);
                 i.putExtra("rowid", rowid);
                 startActivity(i);
             }
         });
+
     }
 
 
@@ -130,8 +133,7 @@ public class MainActivity extends AppCompatActivity {
             todoadpt.notifyDataSetChanged();
         }
         else if (id == R.id.action_showhidedone) {
-            if (showdone) showdone = false;
-            else showdone = true;
+            showdone = !showdone;
 
             ctrl.readDB(this,currentmode,showdone);
            /* ctrl.readDB(this,"ONLY_NOT_DONE");

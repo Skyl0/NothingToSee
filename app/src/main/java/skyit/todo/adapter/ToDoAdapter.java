@@ -10,6 +10,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import skyit.todo.R;
 import skyit.todo.model.ToDo;
@@ -67,7 +70,12 @@ public class ToDoAdapter extends BaseAdapter {
         doneView.setChecked(actual.getDone());
         nameView.setText(actual.getName());
         descView.setText(actual.getDesc());
-        dateView.setText(actual.getDate().toString());
+
+        Calendar cal = new GregorianCalendar();
+        cal.setTimeZone(TimeZone.getTimeZone("CET"));
+        cal.setTimeInMillis(actual.getDate().getTime());
+
+        dateView.setText(cal.get(Calendar.DAY_OF_MONTH) +"."+ cal.get(Calendar.MONTH) +"."+cal.get(Calendar.YEAR) +" - "+ cal.get(Calendar.HOUR_OF_DAY) +":"+cal.get(Calendar.MINUTE));
 
         String lightred = "#ffaaaa";
         if (actual.getImportant()) {

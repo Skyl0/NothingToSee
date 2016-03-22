@@ -77,7 +77,7 @@ public class ToDoAdapter extends BaseAdapter {
 
         dateView.setText(cal.get(Calendar.DAY_OF_MONTH) +"."+ cal.get(Calendar.MONTH) +"."+cal.get(Calendar.YEAR) +" - "+ cal.get(Calendar.HOUR_OF_DAY) +":"+cal.get(Calendar.MINUTE));
 
-        String lightred = "#ffaaaa";
+        String lightred = "#33ff0000";
         if (actual.getImportant()) {
             doneView.setBackgroundColor(Color.parseColor(lightred));
             nameView.setBackgroundColor(Color.parseColor(lightred));

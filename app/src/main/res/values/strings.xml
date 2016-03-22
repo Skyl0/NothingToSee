@@ -16,8 +16,10 @@
 
     // Dialog Boxes
 
-    <string name="dialog_erasetitle">Alle ToDo löschen</string>
+    <string name="dialog_erasetitle">Alle ToDo löschen?</string>
     <string name="dialog_erasemsg">Sind Sie sicher, dass Sie alle ToDo löschen möchten?</string>
+    <string name="dialog_erasetitlesingle">Dieses ToDo löschen?</string>
+    <string name="dialog_erasemsgsingle">Sind Sie sicher, dass Sie dieses ToDo löschen möchten?</string>
     <string name="title_activity_login">Login</string>
 
     <string name="hello_world">Hello world!</string>

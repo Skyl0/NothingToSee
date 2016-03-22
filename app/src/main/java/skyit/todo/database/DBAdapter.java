@@ -82,7 +82,7 @@ public class DBAdapter {
         return values;
     }
 
-    public boolean deleteTool (long rowId) {
+    public boolean deleteToDo (long rowId) {
         return _db.delete(TABLE_NAME, COLUMN_ID + "=" + rowId, null) >0;
     }
 

@@ -23,7 +23,7 @@ import skyit.todo.model.ToDo;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listview;
+   // ListView listview;
     ToDoCtrl ctrl = new ToDoCtrl();
     ToDoAdapter todoadpt;
     DBAdapter db = new DBAdapter(this);
@@ -35,7 +35,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listview = (ListView) findViewById(R.id.listViewToDo);
+        final ListView listview = (ListView) findViewById(R.id.listViewToDo);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+                // ListView lv = (ListView) parent;
+                Context _c = getApplicationContext();
+                ToDo o = (ToDo) listview.getItemAtPosition(position);
+
+                long rowid = o.getRowid();
+
+                Log.i("MAIN", "Click registered at " + position + "! RowId caught " + rowid);
+
+                Intent i = new Intent(_c, AddEditToDo.class);
+                i.putExtra("rowid", rowid);
+                startActivity(i);
+            }
+        });
+
         showdone = true;
 
         try  {
@@ -48,26 +68,9 @@ public class MainActivity extends AppCompatActivity {
         todoadpt = new ToDoAdapter(ctrl.getTodos(),this);
 
         listview.setAdapter(todoadpt);
-        listview.setClickable(true);
+      //  listview.setClickable(true);
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-
-                ListView lv = (ListView) parent;
-                Context _c = getApplicationContext();
-                ToDo o = (ToDo) lv.getItemAtPosition(position);
-
-                long rowid = o.getRowid();
-
-                Log.i("MAIN", "Click registered at " + position + "! RowId caught " + rowid);
-
-                Intent i = new Intent(_c, AddEditToDo.class);
-                i.putExtra("rowid", rowid);
-                startActivity(i);
-            }
-        });
 
     }
 

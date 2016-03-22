@@ -1744,14 +1744,16 @@ containing a value of this type.
         public static final int action_usermenu=0x7f060018;
         public static final int app_name=0x7f060019;
         public static final int dialog_erasemsg=0x7f06001a;
-        public static final int dialog_erasetitle=0x7f06001b;
-        public static final int hello_world=0x7f06001c;
-        public static final int status_bar_notification_info_overflow=0x7f06001d;
-        public static final int title_activity_add_edit_to_do=0x7f06001e;
-        public static final int title_activity_first_start=0x7f06001f;
-        public static final int title_activity_launcher=0x7f060020;
-        public static final int title_activity_login=0x7f060021;
-        public static final int title_activity_user_management=0x7f060022;
+        public static final int dialog_erasemsgsingle=0x7f06001b;
+        public static final int dialog_erasetitle=0x7f06001c;
+        public static final int dialog_erasetitlesingle=0x7f06001d;
+        public static final int hello_world=0x7f06001e;
+        public static final int status_bar_notification_info_overflow=0x7f06001f;
+        public static final int title_activity_add_edit_to_do=0x7f060020;
+        public static final int title_activity_first_start=0x7f060021;
+        public static final int title_activity_launcher=0x7f060022;
+        public static final int title_activity_login=0x7f060023;
+        public static final int title_activity_user_management=0x7f060024;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080073;

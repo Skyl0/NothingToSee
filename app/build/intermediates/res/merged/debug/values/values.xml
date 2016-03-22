@@ -208,7 +208,9 @@
     <string name="action_usermenu">Benutzerverwaltung</string>
     <string name="app_name">ToDo Master</string>
     <string name="dialog_erasemsg">Sind Sie sicher, dass Sie alle ToDo löschen möchten?</string>
-    <string name="dialog_erasetitle">Alle ToDo löschen</string>
+    <string name="dialog_erasemsgsingle">Sind Sie sicher, dass Sie dieses ToDo löschen möchten?</string>
+    <string name="dialog_erasetitle">Alle ToDo löschen?</string>
+    <string name="dialog_erasetitlesingle">Dieses ToDo löschen?</string>
     <string name="hello_world">Hello world!</string>
     <!-- From: file:/C:/_projects/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>

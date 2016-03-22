@@ -50,17 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
         listview.setAdapter(todoadpt);
 
+        listview.setClickable(true);
+        listview.setLongClickable(true);
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                // ListView lv = (ListView) parent;
                 Context _c = getApplicationContext();
                 ToDo o = (ToDo) listview.getItemAtPosition(position);
                 long rowid = o.getRowid();
 
-                Log.i("MAIN", "Click registered at " + position + "! RowId caught " + rowid);
+                Log.i("MAIN", "Click registered at position " + position + " ! RowId caught =>" + rowid);
 
                 Intent i = new Intent(_c, AddEditToDo.class);
                 i.putExtra("rowid", rowid);
@@ -69,15 +71,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View v,
-                                           int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+
                 final Context _c = getApplicationContext();
                 ToDo o = (ToDo) listview.getItemAtPosition(position);
-               final long rowid = o.getRowid();
+                final long rowid = o.getRowid();
 
-                Log.i("MAIN", "LongClick registered at " + position + "! RowId caught " + rowid);
-
+                Log.i("MAIN", "LongClick registered at position " + position + " ! RowId caught =>" + rowid);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(_c);
                 builder
@@ -97,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .setNegativeButton("Nein", null)
                         .show();
-
-
                 return true;
             }
         });

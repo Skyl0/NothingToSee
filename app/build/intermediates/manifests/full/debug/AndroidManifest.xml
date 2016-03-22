@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="skyit.todo.MainActivity"
+            android:name="skyit.todo.Launcher"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,8 +40,8 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name="skyit.todo.Launcher"
-            android:label="@string/title_activity_launcher" >
+            android:name="skyit.todo.MainActivity"
+            android:label="ToDoKing" >
         </activity>
         <activity
             android:name="skyit.todo.UserManagement"

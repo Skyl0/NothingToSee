@@ -1,22 +1,21 @@
 package skyit.todo;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 
 import skyit.todo.adapter.ToDoAdapter;
@@ -30,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     ToDoCtrl ctrl = new ToDoCtrl();
     ToDoAdapter todoadpt;
     DBAdapter db = new DBAdapter(this);
-    boolean showDone;
+    boolean showdone;
+    String currentmode = "SORT_DATE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,37 +38,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listview = (ListView) findViewById(R.id.listViewToDo);
-        showDone = true;
+        showdone = true;
 
         try  {
             ctrl.initDB(this);
+            ctrl.readDB(this, "SORT_DATE", showdone);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        /** ------------------------ *
-         *  --- TO DELETE BEGIN ---- *
-         *  ------------------------ **/
-        Date now = new Date();
-        Date d = new Date(1458010492L * 1000);
-        Date d2 = new Date(1457762092L * 1000);
-
-        ToDo test = new ToDo("Aufstehen","Gähn",d,true,true);
-
-       // ctrl.addToDo("Kaffee kochen","Kaffee kochen",now,true);
-       // ctrl.addToDo("Wäsche waschen","Waschmittel nicht vergessen",d2,false);
-       // ctrl.addToDo(test);
-
-        /** ------------------------ *
-         *  --- TO DELETE END ------ *
-         *  ------------------------ **/
-
-        ctrl.deleteAll();
-
-        ctrl.readDB(this);
-
         todoadpt = new ToDoAdapter(ctrl.getTodos(),this);
+
         listview.setAdapter(todoadpt);
+        listview.setClickable(true);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView a, View v, int position, long id) {
+                Context _c = getApplicationContext();
+                ToDo o = (ToDo)listview.getItemAtPosition(position);
+
+                Log.i("MAIN", "Click registered at " + position);
+                long rowid = o.getRowid();
+
+                Intent i = new Intent(_c, AddEditToDo.class);
+                i.putExtra("rowid", rowid);
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -95,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         else if (id == R.id.action_new) {
          //  setContentView(R.layout.activity_add_edit_to_do);
             Intent i = new Intent(this, AddEditToDo.class);
+          //  i.putExtra("rowid",43L);
             startActivity(i);
         }
         else if (id == R.id.action_deleteall) {
@@ -115,50 +113,30 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
                     })
-                    .setNegativeButton("Nein", null)						//Do nothing on no
+                    .setNegativeButton("Nein", null)
                     .show();
 
         }
         else if (id == R.id.action_sortdate) {
-            ArrayList<ToDo> temp = ctrl.getTodos();
-            Collections.sort(temp);
-            ctrl.setTodos(temp);
+            ctrl.readDB(this,"SORT_DATE",showdone);
+            currentmode = "SORT_DATE";
+            todoadpt.set_data(ctrl.getTodos());
             todoadpt.notifyDataSetChanged();
         }
         else if (id == R.id.action_sortimportance) {
-            ArrayList<ToDo> temp = ctrl.getTodos();
-            Collections.sort(temp, new Comparator<ToDo>() {
-
-                @Override
-                public int compare(ToDo todo1, ToDo todo2) {
-                if (todo1.getImportant() && !todo2.getImportant()) {
-                        return -1;
-                    }
-                    if (!todo1.getImportant() && todo2.getImportant()) {
-                        return 1;
-                    }
-                    if (todo1.getDate().compareTo(todo2.getDate()) == -1) {
-                        return -1;
-                    }
-                    if (todo2.getDate().compareTo(todo1.getDate()) == -1) {
-                        return 1;
-                    }
-                    return 0;
-                }
-            });
-            ctrl.setTodos(temp);
+            ctrl.readDB(this,"SORT_IMPORTANCE_DATE",showdone);
+            currentmode = "SORT_IMPORTANCE_DATE";
+            todoadpt.set_data(ctrl.getTodos());
             todoadpt.notifyDataSetChanged();
         }
         else if (id == R.id.action_showhidedone) {
-            if (showDone) {
-                showDone = false;
-                todoadpt.set_data(ctrl.getNotDoneTodos());
-                todoadpt.notifyDataSetChanged();
-            } else {
-                showDone = true;
-                todoadpt.set_data(ctrl.getTodos());
-                todoadpt.notifyDataSetChanged();
-            }
+            if (showdone) showdone = false;
+            else showdone = true;
+
+            ctrl.readDB(this,currentmode,showdone);
+           /* ctrl.readDB(this,"ONLY_NOT_DONE");
+            todoadpt.set_data(ctrl.getTodos()); */
+            todoadpt.notifyDataSetChanged();
         }
 
         return super.onOptionsItemSelected(item);

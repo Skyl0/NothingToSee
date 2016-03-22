@@ -37,12 +37,12 @@ MERGED from [com.android.support:support-v4:22.2.0] C:\_projects\ToDo\app\build\
 		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:12:9-43
 	android:theme
 		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:14:9-40
-activity#skyit.todo.MainActivity
+activity#skyit.todo.Launcher
 ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:15:9-23:20
 	android:label
 		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:17:13-45
 	android:name
-		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:16:13-37
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
@@ -71,12 +71,12 @@ ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:32:9-35:20
 		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:34:13-57
 	android:name
 		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:33:13-34
-activity#skyit.todo.Launcher
+activity#skyit.todo.MainActivity
 ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:36:9-39:20
 	android:label
-		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:38:13-60
+		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:38:13-37
 	android:name
-		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:37:13-37
+		ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:37:13-41
 activity#skyit.todo.UserManagement
 ADDED from C:\_projects\ToDo\app\src\main\AndroidManifest.xml:40:9-43:20
 	android:label

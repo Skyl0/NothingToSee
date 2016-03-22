@@ -51,14 +51,21 @@ public class DBAdapter {
         return _db.insert(TABLE_NAME, null, initValues);
     }
 
-    public Cursor querySortDate() {
-       return _db.query(TABLE_NAME, null, null, null, null, null, "date ASC");
+    public Cursor querySortDate(boolean showdone) {
+        String s = null;
+        if (!showdone) s = "done = 0";
+        return _db.query(TABLE_NAME, null, s, null, null, null, "date ASC");
     }
 
-    public Cursor querySortImportanceThenDate() {
-        return _db.query(TABLE_NAME,null, null, null, null, null, "important DESC, date ASC");
+    public Cursor querySortImportanceThenDate(boolean showdone) {
+        String s = null;
+        if (!showdone) s = "done = 0";
+        return _db.query(TABLE_NAME, null, s, null, null, null, "important DESC, date ASC");
     }
 
+    public Cursor queryOnlyNotDone() {
+        return _db.query(TABLE_NAME, null, "done = 0", null, null, null, "date ASC");
+    }
 
     public boolean updateToDo(long rowId, String name, String desc, String date, Boolean important, Boolean done) {
         ContentValues updateValues = createContentValues (name, desc, date, important, done);
@@ -79,7 +86,7 @@ public class DBAdapter {
         return _db.delete(TABLE_NAME, COLUMN_ID + "=" + rowId, null) >0;
     }
 
-    public Cursor fetchAllTodo () throws SQLException {
+    public Cursor fetchAllTodo (boolean showdone) throws SQLException {
         return _db.query(TABLE_NAME, new String[] {COLUMN_ID, COLUMN_NAME, COLUMN_DESC, COLUMN_DATE, COLUMN_IMPORTANT, COLUMN_DONE}, null,null,null,null,null);
     }
 
@@ -94,5 +101,6 @@ public class DBAdapter {
     public void truncateTable() throws SQLException {
         _db.delete(TABLE_NAME,"",null);
     }
+
 
 }

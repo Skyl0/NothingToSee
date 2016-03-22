@@ -29,56 +29,12 @@ public class ToDoCtrl {
         return todos;
     }
 
-    public ArrayList<ToDo> getNotDoneTodos() {
-        ArrayList notdone = new ArrayList();
-
-        for (ToDo current : todos) {
-            if (!current.getDone()) notdone.add(current);
-        }
-
-        return notdone;
-    }
-
-    public void addToDo (ToDo todo) {
-        long rowid;
-        ToDo tosave = new ToDo(todo.getName(),todo.getDesc(), todo.getDate(), todo.getImportant(),todo.getDone());
-
-        rowid = db.createToDo(tosave);
-        tosave.setRowid(rowid);
-        Log.i("ToDoCtrl", "Created ToDo with rowId =" + rowid);
-        todos.add(tosave);
-    }
-
-    public void addToDo (String name, String desc, Date date, Boolean important) {
-        ToDo temp = new ToDo();
-        long rowid;
-
-        temp.setName(name);
-        temp.setDesc(desc);
-        temp.setDate(date);
-        temp.setImportant(important);
-        temp.setDone(false);
-
-        rowid = db.createToDo(temp);
-        temp.setRowid(rowid);
-        Log.i("ToDoCtrl","Created ToDo with rowId =" + rowid);
-        todos.add(temp);
-    }
-
     public void deleteAll() {
         todos.clear();
     }
 
-    public ToDo getToDo (int i) {
-        return todos.get(i);
-    }
-
     public ToDoCtrl() {
         todos = new ArrayList<>();
-    }
-
-    public ToDoCtrl(ArrayList<ToDo> todos) {
-        this.todos = todos;
     }
 
     public void initDB (Context c) throws SQLException {
@@ -87,24 +43,24 @@ public class ToDoCtrl {
         Log.i("ToDOCtrl","Opened...");
     }
 
-    public void writeDB (Context c) throws SQLException {
-        db.truncateTable();
-
-        for (ToDo current : todos) {
-            long msec = current.getDate().getTime();
-            String s_msec = Long.toString(msec);
-            db.createToDo(current.getName(), current.getDesc(), s_msec,current.getImportant(), current.getDone());
-        }
-    }
-
-    public void readDB (Context c) {
+    public void readDB (Context c, String mode, boolean showdone) {
         String name, desc, date;
+        int rowid;
         boolean important, done;
         ToDo temp;
+       deleteAll();
 
-       cursor  = db.fetchAllTodo();
+        switch (mode) {
+            case "ALL": cursor  = db.fetchAllTodo(showdone); break;
+            case "SORT_DATE": cursor  = db.querySortDate(showdone); break;
+            case "SORT_IMPORTANCE_DATE": cursor  = db.querySortImportanceThenDate(showdone); break;
+            //case "ONLY_NOT_DONE": cursor =  db.queryOnlyNotDone(); break;
+            default: cursor  = db.fetchAllTodo(showdone); break;
+        }
+
         if (cursor.moveToFirst()) {
             do {
+                rowid = cursor.getInt(0);
                 name = cursor.getString(1);
                 desc = cursor.getString(2);
                 date = cursor.getString(3);
@@ -112,6 +68,9 @@ public class ToDoCtrl {
                 important = HelperMethods.intToBool(cursor.getInt(4));
                 done = HelperMethods.intToBool(cursor.getInt(5));
                 temp = new ToDo(name,desc,new Date(fdate), important, done);
+
+                temp.setRowid(rowid);
+            //    Log.i(this.toString(),"Rowid added " + rowid);
 
                 todos.add(temp);
             } while (cursor.moveToNext());

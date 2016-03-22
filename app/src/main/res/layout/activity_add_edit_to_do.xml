@@ -43,7 +43,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="50dp" >
+            android:layout_height="wrap_content" >
 
             <Button
                 android:layout_width="120dp"
@@ -60,6 +60,18 @@
                 android:onClick="backtomainview"/>
 
         </LinearLayout>
+
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:spinnersShown="false" />
+
+        <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time"
+            android:timePickerMode="clock" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_usermenu" android:title="@string/action_usermenu"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_new" android:title="@string/action_new"
+    android:orderInCategory="101" app:showAsAction="never" />
+    <item android:id="@+id/action_deleteall" android:title="@string/action_deleteall"
+        android:orderInCategory="102" app:showAsAction="never" />
+    <item android:id="@+id/action_sortdate" android:title="@string/action_sortdate"
+        android:orderInCategory="103" app:showAsAction="never" />
+    <item android:id="@+id/action_sortimportance" android:title="@string/action_sortimportance"
+        android:orderInCategory="104" app:showAsAction="never" />
+    <item android:id="@+id/action_showhidedone" android:title="@string/action_showhidedone"
+        android:orderInCategory="105" app:showAsAction="never" />
+</menu>

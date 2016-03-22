@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="skyit.todo.AddEditToDo">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1" >
+
+        <TextView
+            android:text="Hinzufügen/Editieren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:inputType="text" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:inputType="text" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wichtig"
+            android:id="@+id/important" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Erledigt"
+            android:id="@+id/done" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:text="Ok"
+                android:id="@+id/ok"
+                android:onClick="add"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Abbrechen"
+                android:id="@+id/cancel"
+                android:onClick="backtomainview"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+<!-- From: file:/C:/_projects/ToDo/app/src/main/res/layout/activity_add_edit_to_do.xml -->

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         final ListView listview = (ListView) findViewById(R.id.listViewToDo);
 
          showdone = true;
+        db.open();
 
         try  {
             ctrl.initDB(this);
@@ -46,29 +47,29 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        todoadpt = new ToDoAdapter(ctrl.getTodos(),this);
+        todoadpt = new ToDoAdapter(ctrl.getTodos(),this, db);
 
         listview.setAdapter(todoadpt);
 
         listview.setClickable(true);
         listview.setLongClickable(true);
-
+/*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+            public void onClick(AdapterView<?> parent, View v, int position, long id) {
 
                 Context _c = getApplicationContext();
-                ToDo o = (ToDo) listview.getItemAtPosition(position);
+                ToDo o = (ToDo) parent.getItemAtPosition(position);
                 long rowid = o.getRowid();
 
-                Log.i("MAIN", "Click registered at position " + position + " ! RowId caught =>" + rowid);
+                Log.d("MAIN", "Click registered at position " + position + " ! RowId caught =>" ); //+ rowid);
 
                 Intent i = new Intent(_c, AddEditToDo.class);
                 i.putExtra("rowid", rowid);
                 startActivity(i);
             }
-        });
+        });*/
 
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 ToDo o = (ToDo) listview.getItemAtPosition(position);
                 final long rowid = o.getRowid();
 
-                Log.i("MAIN", "LongClick registered at position " + position + " ! RowId caught =>" + rowid);
+                Log.d("MAIN", "LongClick registered at position " + position + " ! RowId caught =>" + rowid);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(_c);
                 builder
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                db.open();
+
                                 db.deleteToDo(rowid);
                                 db.close();
                                 ctrl.readDB(_c, currentmode, showdone);

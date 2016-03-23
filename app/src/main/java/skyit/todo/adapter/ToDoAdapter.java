@@ -1,12 +1,15 @@
 package skyit.todo.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,7 +17,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import skyit.todo.AddEditToDo;
+import skyit.todo.HelperMethods;
 import skyit.todo.R;
+import skyit.todo.database.DBAdapter;
 import skyit.todo.model.ToDo;
 
 /**
@@ -30,10 +36,12 @@ public class ToDoAdapter extends BaseAdapter {
 
     private ArrayList<ToDo> _data;
     private Context _c;
+    private DBAdapter _db;
 
-    public ToDoAdapter(ArrayList<ToDo> _data, Context _c) {
+    public ToDoAdapter(ArrayList<ToDo> _data, Context _c, DBAdapter db) {
         this._data = _data;
         this._c = _c;
+        this._db = db;
     }
 
     @Override
@@ -54,15 +62,18 @@ public class ToDoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+        final  long rowid = _data.get(position).getRowid();
+
+        final int pos = position;
 
         if (v == null) {
             LayoutInflater vi = (LayoutInflater)_c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.list_todo_single,null);
         }
 
-        ToDo actual = _data.get(position);
+        final ToDo actual = _data.get(position);
 
-        CheckBox doneView = (CheckBox)v.findViewById(R.id.done);
+        final CheckBox doneView = (CheckBox)v.findViewById(R.id.done);
         TextView nameView = (TextView)v.findViewById(R.id.name);
         TextView descView = (TextView)v.findViewById(R.id.description);
         TextView dateView = (TextView)v.findViewById(R.id.date);
@@ -89,6 +100,32 @@ public class ToDoAdapter extends BaseAdapter {
             descView.setBackgroundColor(Color.parseColor("#ffffff"));
             dateView.setBackgroundColor(Color.parseColor("#ffffff"));
         }
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Log.d("MAIN", "Click registered at position " + pos + " ! RowId caught =>" + rowid);
+
+                Intent i = new Intent(_c, AddEditToDo.class);
+                i.putExtra("rowid", rowid);
+                _c.startActivity(i);
+            }
+        });
+
+        doneView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean ischecked) {
+                _db.open();
+Log.d("CHECKED","CHECKED");
+                _db.updateToDo(rowid,actual.getName(),actual.getDesc(), HelperMethods.dateToLongString(actual.getDate()),actual.getImportant(),ischecked);
+
+
+            }
+        });
+
+        // ViewHolder private class
 
         return v;
     }

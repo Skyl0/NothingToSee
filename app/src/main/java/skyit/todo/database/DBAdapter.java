@@ -72,6 +72,12 @@ public class DBAdapter {
         return _db.update(TABLE_NAME, updateValues, COLUMN_ID + "=" + rowId, null) >0;
     }
 
+    public boolean updateToDoDone (long rowId, boolean done) {
+       // ContentValues updateValues = createContentValues (name, desc, date, important, done);
+       // return _db.update(TABLE_NAME, updateValues, COLUMN_ID + "=" + rowId, null) >0;
+        return true;
+    }
+
     private ContentValues createContentValues (String name, String desc, String date, Boolean important, Boolean done) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);

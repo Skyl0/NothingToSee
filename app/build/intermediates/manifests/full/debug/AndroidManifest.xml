@@ -34,6 +34,16 @@
         <activity
             android:name="skyit.todo.AddEditToDo"
             android:label="@string/title_activity_add_edit_to_do" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="todo" />
+                <data android:host="*" />
+ <!-- android:host="newToDo" /> -->
+            </intent-filter>
         </activity>
         <activity
             android:name="skyit.todo.Login"

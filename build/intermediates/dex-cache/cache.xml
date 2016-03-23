@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-067bf818efe637f42e8dee8ddbfff1b120d9bb24.jar" />
-    </item>
-    <item
-        jar="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/pre-dexed/debug/classes-698688bec8189f8a5324be8ee07781ffd268a8ad.jar" />
-    </item>
-    <item
-        jar="/Volumes/Scorpio MacHD/Users/skylo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="C:\Users\Skylo\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-f90ae41ca349eb35833f59eb3d8208ff6ad2e8d2.jar" />
+        <dex dex="C:\_projects\NothingToSee\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-1661416647116147b87396df7f30d3695c10bf97.jar" />
     </item>
     <item
-        jar="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jar="C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\_projects\NothingToSee\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-69f0991091b359de8a70d08414cad58ec7c1912b.jar" />
+    </item>
+    <item
+        jar="C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/Volumes/ExFat/_android/NothingToSee/app/build/intermediates/pre-dexed/debug/classes-6e2adeba0c2f81ea20fa887ee493ec809629f325.jar" />
+        <dex dex="C:\_projects\NothingToSee\app\build\intermediates\pre-dexed\debug\classes-efe8d2ad7eb44917520aaae66055b08631fbaa12.jar" />
+    </item>
+    <item
+        jar="C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\_projects\NothingToSee\app\build\intermediates\pre-dexed\debug\classes-ecc95773662b33e254483b9a9f2a96cc39105bc1.jar" />
     </item>
 
 </items>

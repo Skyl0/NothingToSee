@@ -47,62 +47,14 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        todoadpt = new ToDoAdapter(ctrl.getTodos(),this, db);
+        todoadpt = new ToDoAdapter(ctrl.getTodos(),this, db, ctrl);
 
         listview.setAdapter(todoadpt);
 
         listview.setClickable(true);
         listview.setLongClickable(true);
-/*
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onClick(AdapterView<?> parent, View v, int position, long id) {
 
-                Context _c = getApplicationContext();
-                ToDo o = (ToDo) parent.getItemAtPosition(position);
-                long rowid = o.getRowid();
-
-                Log.d("MAIN", "Click registered at position " + position + " ! RowId caught =>" ); //+ rowid);
-
-                Intent i = new Intent(_c, AddEditToDo.class);
-                i.putExtra("rowid", rowid);
-                startActivity(i);
-            }
-        });*/
-
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-
-                final Context _c = getApplicationContext();
-                ToDo o = (ToDo) listview.getItemAtPosition(position);
-                final long rowid = o.getRowid();
-
-                Log.d("MAIN", "LongClick registered at position " + position + " ! RowId caught =>" + rowid);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(_c);
-                builder
-                        .setTitle(R.string.dialog_erasetitlesingle)
-                        .setMessage(R.string.dialog_erasemsgsingle)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                db.deleteToDo(rowid);
-                                db.close();
-                                ctrl.readDB(_c, currentmode, showdone);
-                                todoadpt.notifyDataSetChanged();
-                                Toast.makeText(MainActivity.this, "ToDo gelöscht!",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("Nein", null)
-                        .show();
-                return true;
-            }
-        });
 
 
     }

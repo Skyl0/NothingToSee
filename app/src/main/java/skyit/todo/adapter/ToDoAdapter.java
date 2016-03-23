@@ -1,16 +1,20 @@
 package skyit.todo.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +24,7 @@ import java.util.TimeZone;
 import skyit.todo.AddEditToDo;
 import skyit.todo.HelperMethods;
 import skyit.todo.R;
+import skyit.todo.controller.ToDoCtrl;
 import skyit.todo.database.DBAdapter;
 import skyit.todo.model.ToDo;
 
@@ -37,11 +42,13 @@ public class ToDoAdapter extends BaseAdapter {
     private ArrayList<ToDo> _data;
     private Context _c;
     private DBAdapter _db;
+    private ToDoCtrl _ctrl;
 
-    public ToDoAdapter(ArrayList<ToDo> _data, Context _c, DBAdapter db) {
+    public ToDoAdapter(ArrayList<ToDo> _data, Context _c, DBAdapter db, ToDoCtrl ctrl) {
         this._data = _data;
         this._c = _c;
         this._db = db;
+        this._ctrl = ctrl;
     }
 
     @Override
@@ -105,7 +112,6 @@ public class ToDoAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-
                 Log.d("MAIN", "Click registered at position " + pos + " ! RowId caught =>" + rowid);
 
                 Intent i = new Intent(_c, AddEditToDo.class);
@@ -114,16 +120,37 @@ public class ToDoAdapter extends BaseAdapter {
             }
         });
 
-        doneView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        v.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean ischecked) {
-                _db.open();
-Log.d("CHECKED","CHECKED");
-                _db.updateToDo(rowid,actual.getName(),actual.getDesc(), HelperMethods.dateToLongString(actual.getDate()),actual.getImportant(),ischecked);
+            public boolean onLongClick(View v) {
 
+                Log.d("MAIN", "LongClick registered at position " + pos + " ! RowId caught =>" + rowid);
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(_c);
+                builder
+                        .setTitle(R.string.dialog_erasetitlesingle)
+                        .setMessage(R.string.dialog_erasemsgsingle)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                _db.deleteToDo(rowid);
+                                _db.close();
+                                _ctrl.readDB(_c, "SORT_DATE", true);
+                                notifyDataSetChanged();
+                                Toast.makeText(_c, "ToDo gelöscht!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Nein", null)
+                        .show();
+                return true;
+                //return false;
             }
         });
+
+
 
         // ViewHolder private class
 

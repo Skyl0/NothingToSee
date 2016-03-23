@@ -2,6 +2,7 @@ package skyit.todo;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.regex.Pattern;
 
 import skyit.todo.controller.ToDoCtrl;
 import skyit.todo.database.DBAdapter;
@@ -40,13 +42,43 @@ public class AddEditToDo extends AppCompatActivity {
         Log.i("AddEdit", "RowId received " + currentrowid);
         db = new DBAdapter(this);
 
+        final EditText name = (EditText)findViewById(R.id.name);
+        final EditText desc = (EditText)findViewById(R.id.description);
+        final CheckBox important = (CheckBox)findViewById(R.id.important);
+        final CheckBox done = (CheckBox)findViewById(R.id.done);
+        final DatePicker date = (DatePicker)findViewById(R.id.date);
+        final TimePicker time = (TimePicker)findViewById(R.id.time);
+
+        /** URI **/
+
+        if (Intent.ACTION_VIEW.equals(i.getAction())) {
+
+            //String s_uri = "todo://newToDo?name=Test&desc=Test2&date=1.1.2012";
+            Uri uri = i.getData();
+           // Uri uri = Uri.parse(s_uri);
+            String s_name = uri.getQueryParameter("name");
+            String s_desc = uri.getQueryParameter("desc");
+            String s_date = uri.getQueryParameter("date");
+            if (s_date.length() > 0) {
+                Log.d("Date",s_date);
+                String[] exploded = s_date.split(Pattern.quote("."));
+                Log.d("Explode length", exploded.length + "");
+                if (exploded.length == 3) {
+                    Log.d("DateY",exploded[0]);
+                    Log.d("DateM",exploded[1]);
+                    Log.d("DateD",exploded[2]);
+                    date.updateDate(Integer.valueOf(exploded[2]), Integer.valueOf(exploded[1]), Integer.valueOf(exploded[0]));
+                }
+            }
+
+            name.setText(s_name);
+            desc.setText(s_desc);
+
+            important.setChecked(false);
+            done.setChecked(false);
+        }
+        /** EDIT */
         if (currentrowid != -1L) {
-            final EditText name = (EditText)findViewById(R.id.name);
-            final EditText desc = (EditText)findViewById(R.id.description);
-            final CheckBox important = (CheckBox)findViewById(R.id.important);
-            final CheckBox done = (CheckBox)findViewById(R.id.done);
-            final DatePicker date = (DatePicker)findViewById(R.id.date);
-            final TimePicker time = (TimePicker)findViewById(R.id.time);
 
             db.open();
            Cursor cursor =  db.fetchTodo(currentrowid);
@@ -148,5 +180,44 @@ public class AddEditToDo extends AppCompatActivity {
             Toast.makeText(AddEditToDo.this, "Ungültige Eingabe!",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void sendemail(View view) {
+
+        final EditText name = (EditText)findViewById(R.id.name);
+        final EditText desc = (EditText)findViewById(R.id.description);
+        final EditText email = (EditText)findViewById(R.id.email);
+        final DatePicker date = (DatePicker)findViewById(R.id.date);
+        final TimePicker time = (TimePicker)findViewById(R.id.time);
+
+        Editable e_name, e_desc, e_email;
+        String s_name, s_desc, s_email;
+
+        e_name = name.getText();
+        e_desc = desc.getText();
+        e_email = email.getText();
+        s_name = e_name.toString();
+        s_desc = e_desc.toString();
+        s_email = e_email.toString();
+
+        Calendar c = new GregorianCalendar(date.getYear(),date.getMonth(),date.getDayOfMonth(), time.getCurrentHour(), time.getCurrentMinute());
+
+        if (s_email.length() > 0) {
+            //Intent i = new Intent(android.content.Intent.ACTION_SEND);
+            //i.setType("message/rfc822");
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{s_email});
+            i.putExtra(Intent.EXTRA_SUBJECT, "TODO => " + s_name);
+            i.putExtra(Intent.EXTRA_TEXT   , "Name: " + s_name + " / Description: " + s_desc +
+                    "\nFällig am: " + c.get(Calendar.DAY_OF_MONTH) + "." + c.get(Calendar.MONTH)  +"." + c.get(Calendar.YEAR));
+            try {
+                startActivity(Intent.createChooser(i, "Sende E-Mail mit..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this, "Keine E-Mail Clients installiert.", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
     }
 }

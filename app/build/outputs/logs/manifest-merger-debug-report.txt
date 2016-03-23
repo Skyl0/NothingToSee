@@ -1,95 +1,113 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:2:1-46:12
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:2:1-53:12
 	package
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:3:5-25
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:3:5-25
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:6:5-71
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:6:5-71
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:6:22-68
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:6:22-68
 uses-permission#android.permission.READ_PROFILE
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:7:5-71
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:7:5-71
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:7:22-68
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:7:22-68
 uses-permission#android.permission.READ_CONTACTS
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:8:5-72
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:8:5-72
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:8:22-69
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:8:22-69
 application
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:10:5-44:19
-MERGED from [com.android.support:appcompat-v7:22.2.0] /Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:22.2.0] /Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml:22:5-20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:10:5-51:19
+MERGED from [com.android.support:appcompat-v7:22.2.0] C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.0] C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:13:9-41
 	android:allowBackup
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:11:9-35
 	android:icon
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:12:9-47
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:12:9-47
 	android:theme
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:14:9-40
 activity#skyit.todo.Launcher
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:15:9-23:20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:15:9-23:20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:17:13-45
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:17:13-45
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:16:13-37
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:16:13-37
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:18:13-22:29
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:19:17-69
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:19:25-66
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:21:17-77
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:21:27-74
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:20:27-74
 activity#skyit.todo.FirstStart
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:24:9-27:20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:24:9-27:20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:26:13-63
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:26:13-63
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:25:13-39
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:25:13-39
 activity#skyit.todo.AddEditToDo
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:28:9-31:20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:28:9-38:20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:30:13-66
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:30:13-66
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:29:13-40
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:29:13-40
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:31:13-37:29
+action#android.intent.action.VIEW
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:32:17-69
+	android:name
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:32:25-66
+category#android.intent.category.DEFAULT
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:33:17-76
+	android:name
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:33:27-73
+category#android.intent.category.BROWSABLE
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:34:17-78
+	android:name
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:34:27-75
+data
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:35:17-47
+	android:scheme
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:35:23-44
 activity#skyit.todo.Login
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:32:9-35:20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:39:9-42:20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:34:13-57
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:41:13-57
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:33:13-34
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:40:13-34
 activity#skyit.todo.MainActivity
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:36:9-39:20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:43:9-46:20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:38:13-37
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:45:13-37
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:37:13-41
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:44:13-41
 activity#skyit.todo.UserManagement
-ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:40:9-43:20
+ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:47:9-50:20
 	android:label
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:42:13-67
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:49:13-67
 	android:name
-		ADDED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml:41:13-43
+		ADDED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml:48:13-43
 uses-sdk
-INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:22.2.0] /Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:22.2.0] /Volumes/ExFat/_android/NothingToSee/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml:20:5-43
+INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:22.2.0] C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.0] C:\_projects\NothingToSee\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
-		INJECTED from /Volumes/ExFat/_android/NothingToSee/app/src/main/AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
+		INJECTED from C:\_projects\NothingToSee\app\src\main\AndroidManifest.xml
